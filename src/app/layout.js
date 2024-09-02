@@ -10,12 +10,17 @@ storyblokInit({
 });
 
 export default async function RootLayout({ children }) {
+  // Fetch the config from Storyblok
   const currentConfig = await StoryblokCMS.getConfig();
+
   return (
     <StoryblokProvider>
-      <html>
+      <html lang="en">
         <body>
-          <Layout config={currentConfig}>{children}</Layout>
+          {/* Pass the config to the Layout component */}
+          <Layout config={currentConfig}>
+            {children}
+          </Layout>
         </body>
       </html>
     </StoryblokProvider>

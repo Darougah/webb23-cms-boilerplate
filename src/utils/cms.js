@@ -1,4 +1,5 @@
 import { getStoryblokApi } from "@storyblok/react/rsc";
+
 export class StoryblokCMS {
   static IS_PROD = process.env.NODE_ENV === "production";
   static IS_DEV = process.env.NODE_ENV === "development";
@@ -42,18 +43,18 @@ export class StoryblokCMS {
   }
 
   static async generateMetaFromStory(slug) {
-    //Read nextjs metadata docs
-    //1. Add Seo fields to Page component in storyblok (in own tab)
-    //1. Fetch the story from Storyblok (make sure that page content-type has metadata)
-    //2. Extract the metadata from the story
-    //3. Return the metadata object
+    // Read nextjs metadata docs
+    // 1. Add Seo fields to Page component in storyblok (in own tab)
+    // 2. Fetch the story from Storyblok (make sure that page content-type has metadata)
+    // 3. Extract the metadata from the story
+    // 4. Return the metadata object
     return {
       title: "Title",
       description: "Description",
     };
   }
 
-  //Generates static paths from Links API endpoint
+  // Generates static paths from Links API endpoint
   static async getStaticPaths() {
     try {
       let sbParams = {

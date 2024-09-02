@@ -6,4 +6,149 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Hero section styles */
+  .hero-section {
+    @apply flex flex-col md:flex-row items-center justify-center p-8 bg-gradient-to-r from-blue-500 to-purple-500 text-white;
+    /* Added gradient background and text color */
+  }
+
+  .hero-text-container {
+    @apply w-full md:w-1/2 text-center md:text-left mb-6 md:mb-0;
+    /* Added margin-bottom for better spacing on small screens */
+  }
+
+  .hero-text-container h1 {
+    @apply text-4xl font-bold leading-tight mb-4;
+    /* Enhanced typography for heading */
+  }
+
+  .hero-text-container p {
+    @apply text-lg md:text-xl leading-relaxed;
+    /* Adjusted text size and line-height */
+  }
+
+  .hero-image-container {
+    @apply w-full md:w-1/2 mt-4 md:mt-0 text-center md:text-right;
+  }
+
+  .hero-button {
+    @apply inline-block mt-4 py-2 px-6 bg-blue-700 hover:bg-blue-800 text-white rounded-full shadow-lg transition duration-300;
+    /* Enhanced button design with rounded-full, shadow, and hover effects */
+  }
+
+  .hero-image {
+    @apply w-full h-auto max-w-xs md:max-w-md mx-auto md:ml-auto rounded-lg shadow-lg;
+    /* Added rounded corners and shadow for the image */
+  }
+
+  /* Footer styles */
+  .footer {
+    @apply bg-gray-800 text-gray-300 py-8;
+    /* Darkened the footer background and adjusted text color */
+  }
+
+  .container {
+    @apply mx-auto px-4 text-center;
+  }
+
+  .footer-content {
+    @apply flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0;
+    /* Adjusted spacing and alignment */
+  }
+
+  .footer-logo-container {
+    @apply mb-4 md:mb-0;
+  }
+
+  .footer-menu ul {
+    @apply flex space-x-6 mb-4 md:mb-0 justify-center text-sm font-medium;
+    /* Increased spacing and font size */
+  }
+
+  .footer-link {
+    @apply text-gray-300 hover:text-white transition duration-300;
+    /* Added hover effect and transition for links */
+  }
+
+  .footer-social-links {
+    @apply flex space-x-4 items-center justify-center;
+  }
+
+  .footer-social-link {
+    @apply text-gray-300 hover:text-white flex items-center space-x-2 transition duration-300;
+    /* Added hover effect and transition for social links */
+  }
+
+  .social-icon {
+    @apply w-8 h-8;
+    /* Set consistent size for social icons */
+  }
+
+  .footer-copyright {
+    @apply text-sm mt-6 text-gray-400;
+    /* Made copyright text smaller and lighter */
+  }
+
+  /* Text with Image section styles */
+  .text-image-section {
+    @apply flex flex-col md:flex-row items-center justify-center my-8;
+    /* Flex for positioning text and image, and center content */
+  }
+
+  .text-content {
+    @apply w-full md:w-1/2 px-4 text-center md:text-left;
+    /* Text aligned center on small screens and left on larger */
+  }
+
+  .text-content h2 {
+    @apply text-3xl font-semibold leading-tight mb-4;
+    /* Enhanced typography for the heading */
+  }
+
+  .text-content p {
+    @apply text-lg leading-relaxed text-gray-700;
+    /* Adjusted text size and color */
+  }
+
+  .image-container {
+    @apply w-full md:w-1/2 px-4 mt-4 md:mt-0 flex justify-center;
+    /* Flex and justify-center for centering the image */
+  }
+
+  .image-with-text img {
+    @apply w-auto h-auto max-w-md rounded-lg shadow-lg;
+    /* Ensure aspect ratio is maintained with rounded corners and shadow */
+  }
+
+  /* Newsletter styles */
+  .newsletterSection {
+    @apply bg-white p-8 rounded-lg shadow-md text-center my-8;
+    /* Changed background to white, added shadow, and refined padding */
+  }
+
+  .newsletterSection .container {
+    @apply max-w-lg mx-auto;
+    /* Increased max-width for better text layout */
+  }
+
+  .newsletterSection .title {
+    @apply text-3xl font-bold mb-4 text-gray-800;
+    /* Enhanced title typography and color */
+  }
+
+  .newsletterSection .richtext {
+    @apply mb-6 text-gray-600;
+    /* Adjusted text color */
+  }
+
+  .newsletterSection .input {
+    @apply p-3 w-full max-w-md border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500 focus:outline-none;
+    /* Improved input styling and added focus effects */
+  }
+
+  .newsletterSection .button {
+    @apply bg-blue-600 text-white py-3 px-6 rounded-full hover:bg-blue-700 shadow-lg transition duration-300;
+    /* Enhanced button styling with rounded-full, shadow, and hover effects */
+  }
 }
