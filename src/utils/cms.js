@@ -86,6 +86,83 @@
 // }
 
 
+// import { getStoryblokApi } from "@storyblok/react/rsc";
+
+// export class StoryblokCMS {
+//   static IS_PROD = process.env.NODE_ENV === "production";
+//   static IS_DEV = process.env.NODE_ENV === "development";
+//   static VERSION = this.IS_PROD ? "published" : "draft";
+//   static TOKEN = process.env.NEXT_PUBLIC_PREVIEW_STORYBLOK_TOKEN;
+
+//   static async sbGet(path, params) {
+//     return getStoryblokApi().get(path, params);
+//   }
+
+//   static async getStory(params) {
+//     if (!params) return null;
+//     const uri = params?.slug?.join("/");
+//     const storyUrl = "cdn/stories/" + uri;
+
+//     try {
+//       const { data } = await this.sbGet(storyUrl, this.getDefaultSBParams());
+//       return data.story;
+//     } catch (error) {
+//       console.error('Error fetching story:', error);
+//       return null;
+//     }
+//   }
+
+//   static getDefaultSBParams() {
+//     return {
+//       version: this.VERSION,
+//       resolve_links: "url",
+//       cv: Date.now(),
+//     };
+//   }
+
+//   static async getConfig() {
+//     try {
+//       const { data } = await this.sbGet("cdn/stories/config", this.getDefaultSBParams());
+//       return data?.story;
+//     } catch (error) {
+//       console.log("CONFIG ERROR", error);
+//       return {};
+//     }
+//   }
+
+//   static async generateMetaFromStory(slug) {
+//     return {
+//       title: "Title",
+//       description: "Description",
+//     };
+//   }
+
+//   static async getStaticPaths() {
+//     try {
+//       let sbParams = { version: this.VERSION };
+//       let { data } = await this.sbGet("cdn/links/", sbParams);
+//       let paths = [];
+
+//       Object.keys(data.links).forEach((linkKey) => {
+//         const link = data.links[linkKey];
+//         if (link.is_folder || link.slug === "home") {
+//           return;
+//         }
+//         let slug = link.slug === "home" ? [] : link.slug;
+//         if (slug !== "") {
+//           paths.push({ slug: slug.split("/") });
+//         }
+//       });
+
+//       return paths;
+//     } catch (error) {
+//       console.log("PATHS ERROR", error);
+//       return [];
+//     }
+//   }
+// }
+
+
 import { getStoryblokApi } from "@storyblok/react/rsc";
 
 export class StoryblokCMS {
@@ -95,6 +172,7 @@ export class StoryblokCMS {
   static TOKEN = process.env.NEXT_PUBLIC_PREVIEW_STORYBLOK_TOKEN;
 
   static async sbGet(path, params) {
+    console.log(`Fetching from Storyblok: ${path}`, params); // Log the API request
     return getStoryblokApi().get(path, params);
   }
 
@@ -105,6 +183,7 @@ export class StoryblokCMS {
 
     try {
       const { data } = await this.sbGet(storyUrl, this.getDefaultSBParams());
+      console.log("Fetched story data:", data); // Log the fetched data
       return data.story;
     } catch (error) {
       console.error('Error fetching story:', error);
@@ -123,6 +202,7 @@ export class StoryblokCMS {
   static async getConfig() {
     try {
       const { data } = await this.sbGet("cdn/stories/config", this.getDefaultSBParams());
+      console.log("Fetched config data:", data); // Log the fetched config
       return data?.story;
     } catch (error) {
       console.log("CONFIG ERROR", error);
@@ -154,6 +234,7 @@ export class StoryblokCMS {
         }
       });
 
+      console.log("Generated static paths:", paths); // Log the generated paths
       return paths;
     } catch (error) {
       console.log("PATHS ERROR", error);

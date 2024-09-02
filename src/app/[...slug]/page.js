@@ -60,6 +60,7 @@ export default async function CMSPage({ params }) {
   try {
     const currentStory = await StoryblokCMS.getStory(params);
     if (!currentStory) {
+      console.log("No story found for params:", params); // Log when no story is found
       return (
         <div className="flex items-center justify-center h-screen">
           <h1 className="text-4xl font-bold">This page does not exist, but here is something else!</h1>
@@ -67,7 +68,7 @@ export default async function CMSPage({ params }) {
         </div>
       );
     }
-
+    console.log("Rendering story:", currentStory); // Log the story being rendered
     return <StoryblokStory story={currentStory} />;
   } catch (error) {
     console.error("Error fetching story:", error);
