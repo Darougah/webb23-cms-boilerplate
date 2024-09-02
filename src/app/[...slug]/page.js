@@ -1,38 +1,85 @@
+// import StoryblokStory from "@storyblok/react/story";
+// import { notFound } from "next/navigation";
+// import { StoryblokCMS } from "@/utils/cms";
+
+// //Generates static paths for all stories
+// //Nextjs will generate a static page for each story
+// export async function generateStaticParams() {
+//   try {
+//     const paths = await StoryblokCMS.getStaticPaths();
+//     return paths;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// //Generates static meta props for each story
+// export async function generateMetadata({params}) {
+//   const slug = params.slug.join("/");
+//   return StoryblokCMS.generateMetaFromStory(slug);
+// }
+
+// //Params are passed to the CMSPage component and used to fetch the story
+// //This function is called for each item in the paths array returned from generateStaticParams func
+// export default async function CMSPage({ params }) {
+//   try {
+//     const currentStory = await StoryblokCMS.getStory(params);
+//     if (!currentStory) throw new Error();
+
+//     return <StoryblokStory story={currentStory} />;
+//   } catch (error) {
+//     notFound();
+//   }
+// }
+
+// //Force dynamic rendering in development and Visual editor
+// export const dynamic = StoryblokCMS.isDevelopment
+//   ? "force-dynamic"
+//   : "force-static";
+
+
 import StoryblokStory from "@storyblok/react/story";
-import { notFound } from "next/navigation";
 import { StoryblokCMS } from "@/utils/cms";
 
-//Generates static paths for all stories
-//Nextjs will generate a static page for each story
 export async function generateStaticParams() {
   try {
     const paths = await StoryblokCMS.getStaticPaths();
     return paths;
   } catch (error) {
     console.log(error);
+    return [];
   }
 }
 
-//Generates static meta props for each story
-export async function generateMetadata({params}) {
+export async function generateMetadata({ params }) {
   const slug = params.slug.join("/");
   return StoryblokCMS.generateMetaFromStory(slug);
 }
 
-//Params are passed to the CMSPage component and used to fetch the story
-//This function is called for each item in the paths array returned from generateStaticParams func
 export default async function CMSPage({ params }) {
   try {
     const currentStory = await StoryblokCMS.getStory(params);
-    if (!currentStory) throw new Error();
+    if (!currentStory) {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <h1 className="text-4xl font-bold">This page does not exist, but here is something else!</h1>
+          <p>Check out our homepage or other resources.</p>
+        </div>
+      );
+    }
 
     return <StoryblokStory story={currentStory} />;
   } catch (error) {
-    notFound();
+    console.error("Error fetching story:", error);
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <h1 className="text-4xl font-bold">Something went wrong, but here is something else!</h1>
+        <p>Try visiting another page or contact support.</p>
+      </div>
+    );
   }
 }
 
-//Force dynamic rendering in development and Visual editor
 export const dynamic = StoryblokCMS.isDevelopment
   ? "force-dynamic"
   : "force-static";
