@@ -18,7 +18,7 @@ const Header = ({ blok }) => {
             alt={blok.logo.alt || 'Logo'}
             width={150} // Adjusted width
             height={50} // Adjusted height
-            style={{ width: 'auto', height: 'auto' }} // Ensure aspect ratio is maintained
+            style={{ width: 'auto', height: 'auto' }} 
             className="logo"
           />
         )}

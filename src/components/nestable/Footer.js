@@ -7,7 +7,6 @@ const Footer = ({ blok }) => {
     return null;
   }
 
-  // Post-process the HTML to strip inline styles if necessary
   const processedHtml = blok.copyright ? renderRichText(blok.copyright).replace(/style="[^"]*"/g, '') : '';
 
   return (
@@ -22,7 +21,7 @@ const Footer = ({ blok }) => {
                 alt={blok.logo.alt || 'Footer Logo'}
                 width={150}
                 height={75}
-                style={{ width: 'auto', height: 'auto' }} // Maintain aspect ratio
+                style={{ width: 'auto', height: 'auto' }} 
                 className="footer-logo"
               />
             </div>
@@ -57,7 +56,7 @@ const Footer = ({ blok }) => {
                     alt={link.label || 'Social Icon'}
                     width={30}
                     height={30}
-                    style={{ width: 'auto', height: 'auto' }} // Maintain aspect ratio
+                    style={{ width: 'auto', height: 'auto' }} 
                     className="social-icon"
                   />
                 )}
